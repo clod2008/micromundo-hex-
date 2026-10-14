@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Micromundo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header id="ui" class="hud-panel">
+    <div class="hud-tag">SYS://MICROMUNDO.HEX <span class="blink">▮</span></div>
+    <h1 class="glitch" data-text="MICROMUNDO">MICROMUNDO</h1>
+    <p class="stats">
+      <span>HEX</span><b id="stat-tiles">0</b>
+      <span>LINK</span><b id="stat-people">1</b>
+      <span>SEED</span><b id="stat-seed">—</b>
+    </p>
+    <p class="hint">[CLICK] acción · [SHIFT+CLICK] cavar · [ARRASTRAR] orbitar · [RUEDA] zoom</p>
+  </header>
+
+  <div id="clock" class="hud-panel">
+    <span id="clock-day">CICLO 01</span>
+    <span id="clock-time">06:00</span>
+    <span id="clock-phase">AMANECER</span>
+  </div>
+
+  <aside id="progress" class="hud-panel"></aside>
+
+  <nav id="tools">
+    <button data-tool="shape" class="active"><kbd>1</kbd>Moldear</button>
+    <button data-tool="seed"><kbd>2</kbd>Semilla</button>
+    <button data-tool="spring"><kbd>3</kbd>Manantial</button>
+    <button data-tool="stone"><kbd>4</kbd>Piedra</button>
+    <button data-tool="animal"><kbd>5</kbd>Animal</button>
+  </nav>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="labels"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
